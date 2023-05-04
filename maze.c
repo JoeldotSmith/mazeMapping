@@ -186,8 +186,8 @@ void go_to(int dir)
   VWGetPosition(&cur_x, &cur_y, &cur_p);
   dir = (dir+4) % 4;  /* keep goal dir in 0..3 */
   turn = dir - rob_dir;
-  if (turn == 3) turn = -1;  /* turn shorter angle */
-    else if (turn == -3) turn =  1;
+  // if (turn == 3) turn = -1;  /* turn shorter angle */
+  //   else if (turn == -3) turn =  1;
 
   if (turn)
   { if (DEBUG) LCDSetPrintf(13,0, "Turn %d %d   ", turn*90, ASPEED);
