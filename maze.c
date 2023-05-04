@@ -170,7 +170,7 @@ void go_to(int dir)
     // VWWait();
     int neededAng = cur_p + turn*90;
     
-    while (abs(cur_p - neededAng) > 1){
+    while (abs(cur_p - neededAng) != 0){
       VWSetSpeed(0, 25);
       VWGetPosition(&cur_x, &cur_y, &cur_p);
       LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
