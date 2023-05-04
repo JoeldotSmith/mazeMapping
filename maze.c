@@ -197,11 +197,11 @@ void go_to(int dir)
     printf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     neededAng = roundToNearest90(neededAng);
-    if (neededAng == 270){
+    if (abs(neededAng) == 270){
       neededAng = -90;
     }
     
-    LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
+    printf("needed = %i, at = %i \n", neededAng, cur_p);
     
     while (abs(cur_p - neededAng) != 0){
       VWSetSpeed(0, 25);
