@@ -181,13 +181,16 @@ void go_to(int dir)
   { if (DEBUG) LCDSetPrintf(13,0, "Turn %d %d   ", turn*90, ASPEED);
     // VWTurn(turn*90, ASPEED);  /* turn */
     // VWWait();
+    
     printf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     // neededAng = roundToNearest90(neededAng);
     // if (neededAng > 180){
     //   neededAng -= 360;
     // }
-
+    if (turn == 2){
+      neededAng = 180;
+    }
     
     while (abs(cur_p - neededAng) != 0){
       VWSetSpeed(0, 25);
