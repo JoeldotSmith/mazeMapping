@@ -154,6 +154,9 @@ int unmarked(int y, int x, int dir)
 
 
 int roundToNearest90(int num){
+  if (num % 90 == 0){
+    return num;
+  }
   int a = (num/90)*90;
   int b = num + 90;
 
