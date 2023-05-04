@@ -158,7 +158,7 @@ int unmarked(int y, int x, int dir)
 void go_to(int dir)
 { int turn;
   static int cur_x, cur_y, cur_p;
-
+  VWGetPosition(&cur_x, &cur_y, &cur_p);
   dir = (dir+4) % 4;  /* keep goal dir in 0..3 */
   turn = dir - rob_dir;
   if (turn == 3) turn = -1;  /* turn shorter angle */
@@ -166,8 +166,16 @@ void go_to(int dir)
 
   if (turn)
   { if (DEBUG) LCDSetPrintf(13,0, "Turn %d %d   ", turn*90, ASPEED);
-    VWTurn(turn*90, ASPEED);  /* turn */
-    VWWait();
+    // VWTurn(turn*90, ASPEED);  /* turn */
+    // VWWait();
+    int neededAng = cur_p + turn*90;
+    while (abs(cur_p - neededAng) < 3){
+      VWSetSpeed(0, 5);
+      VWGetPosition(&cur_x, &cur_y, &cur_p);
+    }
+    VWSetSpeed(0, 0);
+
+
   }
 
   if (DEBUG) LCDSetPrintf(13,0, "Straight %d %d   ", DIST, SPEED);
