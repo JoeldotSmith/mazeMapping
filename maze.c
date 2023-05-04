@@ -169,7 +169,8 @@ void go_to(int dir)
     // VWTurn(turn*90, ASPEED);  /* turn */
     // VWWait();
     int neededAng = cur_p + turn*90;
-    while (abs(cur_p - neededAng) < 3){
+    LCDPrintf("%i", neededAng);
+    while (abs(cur_p - neededAng) > 3){
       VWSetSpeed(0, 5);
       VWGetPosition(&cur_x, &cur_y, &cur_p);
     }
