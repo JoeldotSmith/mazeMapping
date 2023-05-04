@@ -169,7 +169,7 @@ int roundToNearest90(int num){
     return numToRound;
   }
 
-  int returnValue = ((num - 1) / 90 + 1) * 90;
+  int returnValue = ((numToRound + 90/2)/90) * 90;
   if (neg){
     returnValue = -returnValue;
   }
@@ -197,9 +197,9 @@ void go_to(int dir)
     LCDPrintf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     neededAng = roundToNearest90(neededAng);
-    // if (neededAng > 180){
-    //   neededAng -= 360;
-    // }
+    if (neededAng > 180){
+      neededAng -= 360;
+    }
     
     LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
     
