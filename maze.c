@@ -153,6 +153,14 @@ int unmarked(int y, int x, int dir)
 }
 
 
+int round(int num){
+  int a = (num/90)*90;
+  int b = num + 90;
+
+  return (num - a > b - num)? b : a;
+}
+
+
 /** go_to.
   walk one square in current direction */
 void go_to(int dir)
@@ -172,11 +180,9 @@ void go_to(int dir)
     // if (neededAng > 180){
     //   neededAng -= 360;
     // }
-    if (neededAng % 90 != 0){
-      neededAng += neededAng % 90;
-    }
+
     
-    while (abs(cur_p - neededAng) != 0){
+    while (abs(cur_p - round(neededAng)) != 0){
       VWSetSpeed(0, 25);
       VWGetPosition(&cur_x, &cur_y, &cur_p);
       LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
