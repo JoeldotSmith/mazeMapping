@@ -154,10 +154,27 @@ int unmarked(int y, int x, int dir)
 
 
 int roundToNearest90(int num){
-  if (num % 90 == 0){
-    return num;
+  bool neg = false;
+  int numToRound = num;
+  if (numToRound == 0){
+    return numToRound;
   }
-  return ((num - 1) / 90 + 1) * 90;  
+  if (numToRound < 0){
+    neg = true;
+  }
+  if (neg){
+    numToRound = abs(numToRound);
+  }
+  if (numToRound % 90 == 0){
+    return numToRound;
+  }
+
+  int returnValue = ((num - 1) / 90 + 1) * 90;
+  if (neg){
+    returnValue = -returnValue;
+  }
+
+  return returnValue;  
 }
 
 
@@ -180,7 +197,6 @@ void go_to(int dir)
     LCDPrintf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     neededAng = roundToNearest90(neededAng);
-    neededAng -= 90;
     // if (neededAng > 180){
     //   neededAng -= 360;
     // }
