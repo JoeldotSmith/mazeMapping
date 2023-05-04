@@ -182,7 +182,7 @@ void go_to(int dir)
     // VWTurn(turn*90, ASPEED);  /* turn */
     // VWWait();
     
-    printf("turn = %i\n", turn);
+    LCDPrintf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     // neededAng = roundToNearest90(neededAng);
     // if (neededAng > 180){
@@ -191,11 +191,18 @@ void go_to(int dir)
     if (turn == 2){
       neededAng = 180;
     }
+    if (turn == 1){
+      neededAng = -90;
+    }
+    if (turn == -1){
+      neededAng = 90;
+    }
+    LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
     
     while (abs(cur_p - neededAng) != 0){
       VWSetSpeed(0, 25);
       VWGetPosition(&cur_x, &cur_y, &cur_p);
-      LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
+      
     }
     VWSetSpeed(0, 0);
 
