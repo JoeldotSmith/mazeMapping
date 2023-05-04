@@ -166,6 +166,9 @@ int roundToNearest90(int num){
     numToRound = abs(numToRound);
   }
   if (numToRound % 90 == 0){
+    if (neg){
+      return -numToRound;
+    }
     return numToRound;
   }
 
@@ -200,6 +203,9 @@ void go_to(int dir)
     neededAng = roundToNearest90(neededAng);
     if (abs(neededAng) == 270){
       neededAng = -90;
+    }
+    if (abs(neededAng) == 360){
+      neededAng = 0;
     }
     
     printf("needed = %i, at = %i \n", neededAng, cur_p);
