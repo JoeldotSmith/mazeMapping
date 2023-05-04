@@ -1,6 +1,12 @@
-# Environment
-world small.maz
+# Sim file created 05/04/2023 8:55 PM
+
+# World File 
+world "small.maz"
+
 settings VIS TRACE
 
-# Robot description file using "S" in maze as start position
-S4 S 90 maze.x
+# Robots
+S4 179 180 89
+
+# Objects
+# Markers
