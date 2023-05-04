@@ -153,7 +153,7 @@ int unmarked(int y, int x, int dir)
 }
 
 
-int round(int num){
+int roundToNearest90(int num){
   int a = (num/90)*90;
   int b = num + 90;
 
@@ -177,12 +177,13 @@ void go_to(int dir)
     // VWTurn(turn*90, ASPEED);  /* turn */
     // VWWait();
     int neededAng = cur_p + turn*90;
+    neededAng = roundToNearest90(neededAng);
     // if (neededAng > 180){
     //   neededAng -= 360;
     // }
 
     
-    while (abs(cur_p - round(neededAng)) != 0){
+    while (abs(cur_p - neededAng) != 0){
       VWSetSpeed(0, 25);
       VWGetPosition(&cur_x, &cur_y, &cur_p);
       LCDPrintf("needed = %i, at = %i \n", neededAng, cur_p);
