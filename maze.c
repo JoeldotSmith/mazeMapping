@@ -172,6 +172,9 @@ void go_to(int dir)
     if (neededAng > 180){
       neededAng -= 360;
     }
+    if (neededAng % 90 != 0){
+      neededAng += neededAng % 90;
+    }
     
     while (abs(cur_p - neededAng) != 0){
       VWSetSpeed(0, 25);
