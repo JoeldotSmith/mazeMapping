@@ -201,8 +201,11 @@ void go_to(int dir)
     int neededAng = cur_p + turn*90;
     printf("needed = %i, at = %i \n", neededAng, cur_p);
     neededAng = roundToNearest90(neededAng);
-    if (abs(neededAng) == 270){
+    if (neededAng == 270){
       neededAng = -90;
+    }
+    if (neededAng == -270){
+      neededAng = 90;
     }
     if (abs(neededAng) == 360){
       neededAng = 0;
