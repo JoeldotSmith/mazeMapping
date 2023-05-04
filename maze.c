@@ -194,7 +194,7 @@ void go_to(int dir)
     // VWTurn(turn*90, ASPEED);  /* turn */
     // VWWait();
     
-    LCDPrintf("turn = %i\n", turn);
+    printf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     neededAng = roundToNearest90(neededAng);
     // if (neededAng == 270){
