@@ -180,6 +180,7 @@ void go_to(int dir)
     LCDPrintf("turn = %i\n", turn);
     int neededAng = cur_p + turn*90;
     neededAng = roundToNearest90(neededAng);
+    neededAng -= 90;
     // if (neededAng > 180){
     //   neededAng -= 360;
     // }
