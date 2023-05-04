@@ -157,12 +157,7 @@ int roundToNearest90(int num){
   if (num % 90 == 0){
     return num;
   }
-  int a = (num/90)*90;
-  int b = num + 90;
-
-
-  LCDPrintf("\n\n\n num = %i, a = %i, b = %i\n\n\n", num, a, b);
-  return (num - a > b - num)? b : a;
+  return ((num - 1) / 90 + 1) * 90;  
 }
 
 
