@@ -169,9 +169,9 @@ void go_to(int dir)
     // VWTurn(turn*90, ASPEED);  /* turn */
     // VWWait();
     int neededAng = cur_p + turn*90;
-    if (neededAng > 180){
-      neededAng -= 360;
-    }
+    // if (neededAng > 180){
+    //   neededAng -= 360;
+    // }
     if (neededAng % 90 != 0){
       neededAng += neededAng % 90;
     }
