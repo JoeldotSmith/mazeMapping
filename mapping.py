@@ -2,48 +2,59 @@
 from eye import *
 import math
 
-SIM_WORLD_SIZE = 5000
+SIM_WORLD_SIZE = 2000
 
 
-def Mapping():
+def drawLine(x, y, lidar_x, lidar_y):
+    if lidar_x > SIM_WORLD_SIZE:
+        lidar_x = SIM_WORLD_SIZE
+    if lidar_x < 0:
+        lidar_x = 0
+    if lidar_y > SIM_WORLD_SIZE:
+        lidar_y = SIM_WORLD_SIZE
+    if lidar_y < 0:
+        lidar_y = 0
 
-    lidarValues = LIDARGet()  # [20, 25, 10] (360) elements
+    LCDLine(2*int(128*x/SIM_WORLD_SIZE), 256-2*int(y/SIM_WORLD_SIZE), 2 *
+            int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
+    LCDCircle(2*int(128*lidar_x/SIM_WORLD_SIZE), 256-2 *
+              int(128*lidar_y/SIM_WORLD_SIZE), 5, GREEN, 1)
+
+
+def mapping():
+
+    lidarValues = LIDARGet()  # (360) elements
     # left: lidarValues[90]
     # front: lidarValues[180]
     # right: lidarValues[270]
 
-    # If in C:
-    # int distances [360]; #IDARGet (distances);
-    # int x, y, phi;
-    # VWGetPosition(&x, &y, &phi);
-
     x, y, phi = VWGetPosition()
-
-    # for (int angle 0; angle < 360; angle++ ) {
-    # lidarValue = lidarvalues[angle];
-    # }
 
     # 360 elements: [-180°... 9° 180]
     for angle, lidarValue in enumerate(lidarValues):
         if lidarValue > SIM_WORLD_SIZE:  # Maximum value, so don't bother drawing a line until we can see the end
             continue
 
-        # TODO  (will be a function of angle and phi), in the world frame
-        angle_to_object = 0     # phi - angle + 180 ?
+        angle_to_object = phi - angle + 180  # )*math.pi/180
+        # print("phi = ", phi, ", angle = ", angle,
+        #      ", angle_to_object: ", angle_to_object, ", lidarValue = ", lidarValue)
 
-        lidar_x = int(x-lidarValue*math.cos(angle_to_object))
-        lidar_y = int(y-lidarValue*math.sin(angle_to_object))
+        lidar_x = int(x+lidarValue*math.cos(angle_to_object*math.pi/180))
+        lidar_y = int(y+lidarValue*math.sin(angle_to_object*math.pi/180))
+        # print("lidar_x = ", lidar_x, ", lidar_y = ", lidar_y)
 
         drawLine(x, y, lidar_x, lidar_y)
+        # KEYWait(KEY3)
 
 
 def explore():
-    # Initialise the map with a grey box
 
     while True:
         if KEYRead() == KEY4:
             VWSetSpeed(0, 0)
             break
+        else:
+            mapping()
 
 
 if __name__ == "__main__":
@@ -52,11 +63,15 @@ if __name__ == "__main__":
 
     LCDMenu("Start", "Mapping", " ", "End")
 
+    # Initialise the map with a grey box
     KEYWait(KEY1)
-    LCDPrintf("Welcome\n")
+    LCDArea(0, 0, 256, 256, NAVY, 1)
+    x = 500
+    y = 200
+    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), 256-2 *
+              int(y/SIM_WORLD_SIZE), 5, RED, 1)
 
     KEYWait(KEY2)
-    LCDPrintf("Mapping of the environment\n")
-    Mapping()
+    explore()
 
     KEYWait(KEY4)
