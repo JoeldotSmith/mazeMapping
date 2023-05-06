@@ -3,6 +3,7 @@ from eye import *
 import math
 
 SIM_WORLD_SIZE = 2000
+SPEED = 300
 
 
 def drawLine(x, y, lidar_x, lidar_y):
@@ -35,13 +36,10 @@ def mapping():
         if lidarValue > SIM_WORLD_SIZE:  # Maximum value, so don't bother drawing a line until we can see the end
             continue
 
-        angle_to_object = phi - angle + 180  # )*math.pi/180
-        # print("phi = ", phi, ", angle = ", angle,
-        #      ", angle_to_object: ", angle_to_object, ", lidarValue = ", lidarValue)
+        angle_to_object = phi - angle + 180
 
         lidar_x = int(x+lidarValue*math.cos(angle_to_object*math.pi/180))
         lidar_y = int(y+lidarValue*math.sin(angle_to_object*math.pi/180))
-        # print("lidar_x = ", lidar_x, ", lidar_y = ", lidar_y)
 
         drawLine(x, y, lidar_x, lidar_y)
         # KEYWait(KEY3)
@@ -54,7 +52,12 @@ def explore():
             VWSetSpeed(0, 0)
             break
         else:
-            mapping()
+            lidarValues = LIDARGet()
+            print("Distance to wall: ", lidarValues[180])
+            while lidarValues[180] > 100:
+                print("Distance to wall: ", lidarValues[180])
+                mapping()
+                VWStraight(100, SPEED)
 
 
 if __name__ == "__main__":
