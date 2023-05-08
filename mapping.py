@@ -15,8 +15,7 @@ def drawLine(x, y, lidar_x, lidar_y):
         lidar_y = SIM_WORLD_SIZE
     if lidar_y < 0:
         lidar_y = 0
-    print("x = " +str(2*int(128*x/SIM_WORLD_SIZE))+ ", y = " + str(256-2*int(y/SIM_WORLD_SIZE)))
-    LCDLine(2*int(128*x/SIM_WORLD_SIZE), 256-2*int(128*y/SIM_WORLD_SIZE), 2 * int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
+    LCDLine(2*int(128*x/SIM_WORLD_SIZE), int(128* 2 * (1-y/SIM_WORLD_SIZE)), 2 * int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
     LCDCircle(2*int(128*lidar_x/SIM_WORLD_SIZE), 256-2 * int(128*lidar_y/SIM_WORLD_SIZE), 5, GREEN, 1)
 
 
@@ -28,7 +27,7 @@ def mapping():
     # right: lidarValues[270]
 
     x, y, phi = VWGetPosition()
-    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), int(128* 2 * (1-y/SIM_WORLD_SIZE)), 5, RED, 1)
+    # LCDCircle(2*int(128*x/SIM_WORLD_SIZE), int(128* 2 * (1-y/SIM_WORLD_SIZE)), 5, RED, 1)
 
     # 360 elements: [-180°... 9° 180]
     for angle, lidarValue in enumerate(lidarValues):
@@ -41,7 +40,7 @@ def mapping():
         lidar_y = int(y+lidarValue*math.sin(angle_to_object*math.pi/180))
 
         
-        #drawLine(x, y, lidar_x, lidar_y)
+        drawLine(x, y, lidar_x, lidar_y)
         # KEYWait(KEY3)
 
 
@@ -88,7 +87,7 @@ if __name__ == "__main__":
     LCDArea(0, 0, 256, 256, NAVY, 1)
     x = 180
     y = 180
-    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), 256-2 *int(y/SIM_WORLD_SIZE), 5, RED, 1)
+    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), int(128* 2 * (1-y/SIM_WORLD_SIZE)), 5, RED, 1)
 
     KEYWait(KEY2)
     explore()
