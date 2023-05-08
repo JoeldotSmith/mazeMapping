@@ -71,8 +71,8 @@ if __name__ == "__main__":
     LCDArea(0, 0, 256, 256, NAVY, 1)
     x = 500
     y = 200
-    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), 256-2 *
-              int(y/SIM_WORLD_SIZE), 5, RED, 1)
+    LCDCircle(2*int(128*y/SIM_WORLD_SIZE), 256-2 *
+              int(x/SIM_WORLD_SIZE), 5, RED, 1)
 
     KEYWait(KEY2)
     explore()
