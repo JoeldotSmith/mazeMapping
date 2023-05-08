@@ -58,7 +58,19 @@ def explore():
                 print("Distance to wall: ", lidarValues[180])
                 mapping()
                 lidarValues = LIDARGet()
-                VWStraight(100, SPEED)
+                tooFar = PSDGet(PSD_RIGHT) > 200
+                tooClose = PSDGet(PSD_RIGHT) < 150
+                if tooFar:
+                    VWTurn(-15, 45)
+                    VWWait()
+                elif tooClose:
+                    VWTurn(15, 45)
+                    VWWait()
+                
+                else:
+                    VWStraight(50, 200)
+                    VWWait()
+                
 
 
 if __name__ == "__main__":
