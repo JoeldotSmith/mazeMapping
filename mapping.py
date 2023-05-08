@@ -57,6 +57,7 @@ def explore():
             while lidarValues[180] > 100:
                 print("Distance to wall: ", lidarValues[180])
                 mapping()
+                lidarValues = LIDARGet()
                 VWStraight(100, SPEED)
 
 
