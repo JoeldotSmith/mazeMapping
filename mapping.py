@@ -15,11 +15,9 @@ def drawLine(x, y, lidar_x, lidar_y):
         lidar_y = SIM_WORLD_SIZE
     if lidar_y < 0:
         lidar_y = 0
-
-    LCDLine(2*int(128*x/SIM_WORLD_SIZE), 256-2*int(y/SIM_WORLD_SIZE), 2 *
-            int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
-    LCDCircle(2*int(128*lidar_x/SIM_WORLD_SIZE), 256-2 *
-              int(128*lidar_y/SIM_WORLD_SIZE), 5, GREEN, 1)
+    print("x = " +str(x)+ ", y = " + str(y))
+    LCDLine(2*int(128*x/SIM_WORLD_SIZE), 256-2*int(y/SIM_WORLD_SIZE), 2 * int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
+    LCDCircle(2*int(128*lidar_x/SIM_WORLD_SIZE), 256-2 * int(128*lidar_y/SIM_WORLD_SIZE), 5, GREEN, 1)
 
 
 def mapping():
