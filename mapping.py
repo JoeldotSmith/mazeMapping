@@ -28,6 +28,7 @@ def mapping():
     # right: lidarValues[270]
 
     x, y, phi = VWGetPosition()
+    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), 256-2 *int(y/SIM_WORLD_SIZE), 5, RED, 1)
 
     # 360 elements: [-180°... 9° 180]
     for angle, lidarValue in enumerate(lidarValues):
@@ -39,7 +40,8 @@ def mapping():
         lidar_x = int(x+lidarValue*math.cos(angle_to_object*math.pi/180))
         lidar_y = int(y+lidarValue*math.sin(angle_to_object*math.pi/180))
 
-        drawLine(x, y, lidar_x, lidar_y)
+        
+        #drawLine(x, y, lidar_x, lidar_y)
         # KEYWait(KEY3)
 
 
