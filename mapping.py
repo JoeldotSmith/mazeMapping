@@ -15,7 +15,7 @@ def drawLine(x, y, lidar_x, lidar_y):
         lidar_y = SIM_WORLD_SIZE
     if lidar_y < 0:
         lidar_y = 0
-    print("x = " +str(x)+ ", y = " + str(y))
+    print("x = " +str(2*int(128*x/SIM_WORLD_SIZE))+ ", y = " + str(256-2*int(y/SIM_WORLD_SIZE)))
     LCDLine(2*int(128*x/SIM_WORLD_SIZE), 256-2*int(y/SIM_WORLD_SIZE), 2 * int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
     LCDCircle(2*int(128*lidar_x/SIM_WORLD_SIZE), 256-2 * int(128*lidar_y/SIM_WORLD_SIZE), 5, GREEN, 1)
 
