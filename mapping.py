@@ -60,6 +60,7 @@ def explore():
                 lidarValues = LIDARGet()
                 tooFar = PSDGet(PSD_RIGHT) > 200
                 tooClose = PSDGet(PSD_RIGHT) < 150
+                print("PSDRIGHT = "+ PSD_RIGHT)
                 if tooFar:
                     VWTurn(-15, 45)
                     VWWait()
