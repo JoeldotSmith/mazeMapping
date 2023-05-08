@@ -76,17 +76,16 @@ def explore():
 
 if __name__ == "__main__":
     # SIMSetRobot(0, 300, 300, 100, -90)
-    VWSetPosition(700, 700, 0)
+    VWSetPosition(180, 180, 0)
 
     LCDMenu("Start", "Mapping", " ", "End")
 
     # Initialise the map with a grey box
     KEYWait(KEY1)
     LCDArea(0, 0, 256, 256, NAVY, 1)
-    x = 700
-    y = 700
-    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), 256-2 *
-              int(y/SIM_WORLD_SIZE), 5, RED, 1)
+    x = 180
+    y = 180
+    LCDCircle(2*int(128*x/SIM_WORLD_SIZE), 256-2 *int(y/SIM_WORLD_SIZE), 5, RED, 1)
 
     KEYWait(KEY2)
     explore()

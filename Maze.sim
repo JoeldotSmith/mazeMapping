@@ -6,7 +6,7 @@ world "small.maz"
 settings VIS TRACE
 
 # Robots
-S4 179 180 89
+S4 179 180 0
 
 # Objects
 # Markers
