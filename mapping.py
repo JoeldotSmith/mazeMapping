@@ -36,7 +36,7 @@ def mapping():
         if lidarValue > SIM_WORLD_SIZE:  # Maximum value, so don't bother drawing a line until we can see the end
             continue
 
-        angle_to_object = phi - angle + 360
+        angle_to_object = phi - angle + 180
 
         lidar_x = int(x+lidarValue*math.cos(angle_to_object*math.pi/180))
         lidar_y = int(y+lidarValue*math.sin(angle_to_object*math.pi/180))
