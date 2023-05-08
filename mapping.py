@@ -54,7 +54,7 @@ def explore():
         else:
             lidarValues = LIDARGet()
             print("Distance to wall: ", lidarValues[180])
-            while lidarValues[180] > 100:
+            while lidarValues[180] > 200:
                 print("Distance to wall: ", lidarValues[180])
                 mapping()
                 lidarValues = LIDARGet()
@@ -71,6 +71,9 @@ def explore():
                 else:
                     VWStraight(50, 200)
                     VWWait()
+            else:
+                VWTurn(15, 45)
+                VWWait()
                 
 
 
