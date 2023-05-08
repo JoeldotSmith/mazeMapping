@@ -1,12 +1,12 @@
 # Sim file created 05/04/2023 8:55 PM
 
 # World File 
-world "triangle.wld"
+world "vshape.wld"
 
 settings VIS TRACE
 
 # Robots
-S4 500 200 0
+S4 700 700 0
 
 # Objects
 # Markers
