@@ -41,7 +41,7 @@ def mapping():
         lidar_x = int(x+lidarValue*math.cos(angle_to_object*math.pi/180))
         lidar_y = int(y+lidarValue*math.sin(angle_to_object*math.pi/180))
 
-        drawLine(x, y, lidar_y, lidar_x)
+        drawLine(x, y, lidar_x, lidar_y)
         # KEYWait(KEY3)
 
 
