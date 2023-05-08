@@ -7,19 +7,19 @@ SPEED = 300
 
 
 def drawLine(x, y, lidar_x, lidar_y):
-    if lidar_y > SIM_WORLD_SIZE:
-        lidar_x = SIM_WORLD_SIZE
-    if lidar_y < 0:
-        lidar_x = 0
     if lidar_x > SIM_WORLD_SIZE:
         lidar_x = SIM_WORLD_SIZE
     if lidar_x < 0:
         lidar_x = 0
+    if lidar_y > SIM_WORLD_SIZE:
+        lidar_y = SIM_WORLD_SIZE
+    if lidar_y < 0:
+        lidar_y = 0
 
-    LCDLine(2*int(128*y/SIM_WORLD_SIZE), 256-2*int(x/SIM_WORLD_SIZE), 2 *
-            int(128*lidar_y/SIM_WORLD_SIZE), 256-2*int(128*lidar_x/SIM_WORLD_SIZE), WHITE)
-    LCDCircle(2*int(128*lidar_y/SIM_WORLD_SIZE), 256-2 *
-              int(128*lidar_x/SIM_WORLD_SIZE), 5, GREEN, 1)
+    LCDLine(2*int(128*x/SIM_WORLD_SIZE), 256-2*int(y/SIM_WORLD_SIZE), 2 *
+            int(128*lidar_x/SIM_WORLD_SIZE), 256-2*int(128*lidar_y/SIM_WORLD_SIZE), WHITE)
+    LCDCircle(2*int(128*lidar_x/SIM_WORLD_SIZE), 256-2 *
+              int(128*lidar_y/SIM_WORLD_SIZE), 5, GREEN, 1)
 
 
 def mapping():
