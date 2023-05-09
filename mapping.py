@@ -57,8 +57,8 @@ def explore():
                 
                 mapping()
                 lidarValues = LIDARGet()
-                tooFar = lidarValues[250] > 200
-                tooClose = lidarValues[250] < 100
+                tooFar = lidarValues[270] > 200
+                tooClose = lidarValues[270] < 100
                 
                 if tooFar:
                     VWTurn(-15, 45)
