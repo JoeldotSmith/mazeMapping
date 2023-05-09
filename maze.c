@@ -198,7 +198,8 @@ void go_to(int dir)
     // VWWait();
     
     printf("turn = %i\n", turn);
-    int neededAng = cur_p + turn*90;
+    int neededAng = cur_p + turn*90 + (rand() %
+        (2 - -2 + 1)) + -2;;
     printf("needed = %i, at = %i \n", neededAng, cur_p);
     neededAng = roundToNearest90(neededAng);
     if (neededAng == 270){
