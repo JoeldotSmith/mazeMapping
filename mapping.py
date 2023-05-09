@@ -4,6 +4,7 @@ import math
 
 SIM_WORLD_SIZE = 2000
 SPEED = 300
+foundWall = False
 
 
 def drawLine(x, y, lidar_x, lidar_y):
@@ -53,7 +54,7 @@ def explore():
         else:
             lidarValues = LIDARGet()
             print("Distance to wall: ", lidarValues[180])
-            foundWall = False
+            
             while not foundWall:
                 VWSetSpeed(100, 0)
                 lidarValues = LIDARGet()
