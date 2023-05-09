@@ -62,18 +62,19 @@ def explore():
                 print(lidarValues[180])
                 
                 if tooFar:
-                    VWSetSpeed(0, 0)
+                    
                     VWTurn(-15, 45)
                     VWWait()
-                    VWSetSpeed(100, 0)
+                    
                 elif tooClose:
-                    VWSetSpeed(0, 0)
+                    
                     VWTurn(15, 45)
                     VWWait()
-                    VWSetSpeed(100, 0)
+                    
                 
                 else:
-                    VWSetSpeed(100, 0)
+                    VWStraight(50, 200)
+                    VWWait()
                     
             else:
                 VWTurn(15, 45)
