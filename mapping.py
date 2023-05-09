@@ -58,6 +58,7 @@ def explore():
                 VWSetSpeed(100, 0)
                 lidarValues = LIDARGet()
                 if lidarValues[180] < 500:
+                    VWSetSpeed(0, 0)
                     foundWall = True
             while lidarValues[180] > 300 and foundWall:
                 print("Distance to wall: ", lidarValues[180])
