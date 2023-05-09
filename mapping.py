@@ -57,8 +57,8 @@ def explore():
                 OSWait(10)
                 mapping()
                 lidarValues = LIDARGet()
-                tooFar = lidarValues[270] > 200
-                tooClose = lidarValues[270] < 100
+                tooFar = lidarValues[270] > 250
+                tooClose = lidarValues[270] < 150
                 
                 if tooFar:
                     VWSetSpeed(0, 0)
