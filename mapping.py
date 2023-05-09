@@ -85,8 +85,8 @@ def explore():
 
 if __name__ == "__main__":
     # SIMSetRobot(0, 300, 300, 100, -90)
-    #VWSetPosition(180, 180, 0)
-    VWSetPosition(700, 700, 90)
+    VWSetPosition(180, 180, 0)
+    #VWSetPosition(700, 700, 90)
 
     LCDMenu("Start", "Mapping", " ", "End")
 
