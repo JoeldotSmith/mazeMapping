@@ -4,7 +4,6 @@ import math
 
 SIM_WORLD_SIZE = 2000
 SPEED = 300
-foundWall = False
 
 
 def drawLine(x, y, lidar_x, lidar_y):
@@ -54,18 +53,11 @@ def explore():
         else:
             lidarValues = LIDARGet()
             print("Distance to wall: ", lidarValues[180])
-            
-            while not foundWall:
-                VWSetSpeed(100, 0)
-                lidarValues = LIDARGet()
-                if lidarValues[180] < 500:
-                    VWSetSpeed(0, 0)
-                    foundWall = True
-            while lidarValues[180] > 300 and foundWall:
+            while lidarValues[180] > 300:
                 print("Distance to wall: ", lidarValues[180])
                 mapping()
                 lidarValues = LIDARGet()
-                tooFar = PSDGet(PSD_RIGHT) > 300
+                tooFar = PSDGet(PSD_RIGHT) > 200
                 tooClose = PSDGet(PSD_RIGHT) < 100
                 print("PSDRIGHT = "+ str(PSDGet(PSD_RIGHT)))
                 if tooFar:
@@ -87,7 +79,6 @@ def explore():
 if __name__ == "__main__":
     # SIMSetRobot(0, 300, 300, 100, -90)
     VWSetPosition(180, 180, 0)
-    #VWSetPosition(700, 700, 90)
 
     LCDMenu("Start", "Mapping", " ", "End")
 
