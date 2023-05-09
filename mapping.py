@@ -55,10 +55,9 @@ def explore():
             print("Distance to wall: ", lidarValues[180])
             foundWall = False
             while not foundWall:
-                lidarValues = LIDARGet()
                 VWSetSpeed(100, 0)
+                lidarValues = LIDARGet()
                 if lidarValues[180] < 500:
-                    VWSetSpeed(0, 0)
                     foundWall = True
             while lidarValues[180] > 300 and foundWall:
                 print("Distance to wall: ", lidarValues[180])
@@ -85,8 +84,8 @@ def explore():
 
 if __name__ == "__main__":
     # SIMSetRobot(0, 300, 300, 100, -90)
-    VWSetPosition(180, 180, 0)
-    # CVWSetPosition(700, 700, 90)
+    #VWSetPosition(180, 180, 0)
+    VWSetPosition(700, 700, 90)
 
     LCDMenu("Start", "Mapping", " ", "End")
 
