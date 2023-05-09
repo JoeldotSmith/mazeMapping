@@ -52,14 +52,14 @@ def explore():
             break
         else:
             lidarValues = LIDARGet()
-            print("Distance to wall: ", lidarValues[180])
+            
             while lidarValues[180] > 300:
-                print("Distance to wall: ", lidarValues[180])
+                
                 mapping()
                 lidarValues = LIDARGet()
-                tooFar = lidarValues[270] > 200
-                tooClose = lidarValues[270] < 100
-                print("PSDRIGHT = "+ str(PSDGet(PSD_RIGHT)))
+                tooFar = lidarValues[250] > 200
+                tooClose = lidarValues[250] < 100
+                
                 if tooFar:
                     VWTurn(-15, 45)
                     VWWait()
