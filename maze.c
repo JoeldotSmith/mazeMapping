@@ -198,8 +198,7 @@ void go_to(int dir)
     // VWWait();
     
     printf("turn = %i\n", turn);
-    int neededAng = cur_p + turn*90 + (rand() %
-        (2 - -2 + 1)) + -2;;
+    int neededAng = cur_p + turn*90 + (rand() % (2 - -2 + 1)) + -2;;
     printf("needed = %i, at = %i \n", neededAng, cur_p);
     neededAng = roundToNearest90(neededAng);
     if (neededAng == 270){
@@ -225,7 +224,7 @@ void go_to(int dir)
   }
 
   if (DEBUG) LCDSetPrintf(13,0, "Straight %d %d   ", DIST, SPEED);
-  VWStraight(DIST, SPEED);    /* go one step */
+  VWStraight(DIST + (rand() % (4 - -4 + 1)) + -4, SPEED);    /* go one step */
   VWWait();
 
   VWGetPosition(&cur_x, &cur_y, &cur_p);
