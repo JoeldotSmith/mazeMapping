@@ -54,22 +54,26 @@ def explore():
             lidarValues = LIDARGet()
             
             while lidarValues[180] > 300:
-                
+                OSWait(10)
                 mapping()
                 lidarValues = LIDARGet()
                 tooFar = lidarValues[270] > 200
                 tooClose = lidarValues[270] < 100
                 
                 if tooFar:
+                    VWSetSpeed(0, 0)
                     VWTurn(-15, 45)
                     VWWait()
+                    VWSetSpeed(100, 0)
                 elif tooClose:
+                    VWSetSpeed(0, 0)
                     VWTurn(15, 45)
                     VWWait()
+                    VWSetSpeed(100, 0)
                 
                 else:
-                    VWStraight(100, 200)
-                    VWWait()
+                    VWSetSpeed(100, 0)
+                    
             else:
                 VWTurn(15, 45)
                 VWWait()
